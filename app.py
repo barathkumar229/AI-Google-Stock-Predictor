@@ -12,7 +12,7 @@ app = Flask(__name__)
 # Load the trained model once
 model = pickle.load(open("trained_model.sav", "rb"))
 
-@app.route('/home')
+@app.route('/')
 def home():
     return render_template('index.html')
 
