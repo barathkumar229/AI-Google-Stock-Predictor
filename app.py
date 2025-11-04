@@ -1,100 +1,73 @@
-from flask import Flask, render_template
+from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
-import os
-import requests
+import matplotlib.pyplot as mp
 import yfinance as yf
-import io
+
 from datetime import date, timedelta
+import io, base64
 
 app = Flask(__name__)
 
-# Load model once
-try:
-    model = pickle.load(open("trained_model.sav", "rb"))
-except FileNotFoundError:
-    model = None
-    print("⚠️ trained_model.sav not found")
+# Load the trained model once
+model = pickle.load(open("trained_model.sav", "rb"))
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-
 @app.route('/pridict')
 def pridict():
-    SYMBOL = "GOOGL"
+    # --- Download last 10 days of stock data ---
     yesterday = date.today() - timedelta(days=1)
     start_date = yesterday - timedelta(days=11)
 
-    # Try using Alpha Vantage if API key is available (Render)
-    API_KEY = os.environ.get("ALPHA_VANTAGE_API_KEY")
-    data = None
-
-    if API_KEY:
-        print("📡 Using Alpha Vantage API")
-        try:
-            url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={SYMBOL}&outputsize=compact&datatype=csv&apikey={API_KEY}'
-            response = requests.get(url, timeout=10)
-            response.raise_for_status()
-            data = pd.read_csv(io.StringIO(response.text))
-            data = data.rename(columns={
-                'timestamp': 'Date',
-                'open': 'Open',
-                'high': 'High',
-                'low': 'Low',
-                'adjusted_close': 'Close',
-                'volume': 'Volume'
-            })
-            data = data[['Date', 'Close', 'High', 'Low', 'Open', 'Volume']]
-            data = data.sort_values(by='Date', ascending=True).reset_index(drop=True)
-        except Exception as e:
-            print("Alpha Vantage fetch failed:", e)
-
-    # Fallback to yfinance (local environment)
-    if data is None or data.empty:
-        print("📊 Using yfinance fallback")
-        try:
-            data = yf.download(SYMBOL, start=start_date, end=yesterday, progress=False, threads=False)
-            data.reset_index(inplace=True)
-            data.columns = ['Date', 'Close', 'High', 'Low', 'Open', 'Volume']
-        except Exception as e:
-            return render_template('error.html', message=f"Data fetch failed: {e}")
-
+    data = yf.download("GOOGL", start=start_date, end=yesterday, progress=False)
     if data.empty:
-        return render_template('error.html', message="Stock data unavailable. Try again later.")
+        return render_template('error.html', message="Stock data not available yet. Please try again later.")
+    data.reset_index(inplace=True)
+    data = pd.DataFrame(data)
 
-    # --- Feature Engineering ---
+    data.columns.names = [None, None]
+
+    data.columns = ['Date', 'Close', 'High', 'Low', 'Open', 'Volume']
+
     data['Price Changed'] = data['Close'] - data["Open"]
-    data['MA7'] = data['Close'].rolling(7).mean()
     past = data['Close'].mean()
-    g = data.copy()
+    data['MA7'] = data['Close'].rolling(7).mean()
+    g = data
     g['Close'] = g['Close'].round()
-    x = g['Date'].astype(str).tolist()
-    Y = g['Close'].tolist()
+    x = g["Date"]
+    Y = g['Close']
+
 
     data = data.dropna()
-    data = data.drop(['Date', 'Close'], axis=1)
+    data = data.drop('Date', axis=1)
+
+    print(past)
+    y = data['Close']
+    data = data.drop('Close', axis=1)
     data = data.tail(1)
-
     y_pred = model.predict(data)
-    y_pred_val = round(float(y_pred[0]), 2)
 
-    if y_pred_val > past:
+    if y_pred > past:
         signal = "Bullish momentum — consider buying."
-    elif y_pred_val < past:
+    elif y_pred < past:
         signal = "Bearish momentum — consider selling."
     else:
         signal = "Stable movement — consider holding."
-
+    x=x.astype(str).tolist()
+    Y=Y.tolist()
+    y_pred = round(float(y_pred[0]), 2)  # round to 2 decimals
+    y_pred = f"{y_pred}$"
+    # ✅ Convert to list before sending
     return render_template(
         'pridict.html',
         signal=signal,
         x=x,
-        Y=Y,
-        y_pred=f"{y_pred_val}$"
+       Y=Y,
+        y_pred=y_pred
     )
-
 
 if __name__ == '__main__':
     app.run(debug=True)
