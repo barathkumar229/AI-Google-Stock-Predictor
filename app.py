@@ -20,9 +20,9 @@ def home():
 def pridict():
     # --- Download last 10 days of stock data ---
     yesterday = date.today() - timedelta(days=1)
-    start_date = yesterday - timedelta(days=11)
+    start_date = yesterday - timedelta(days=61)
 
-    data = yf.download("GOOG", start=start_date, end=yesterday, progress=False)
+    data = yf.download("GOOGL", start=start_date, end=yesterday, progress=False)
     if data.empty:
         return render_template('error.html', message="Stock data not available yet. Please try again later.")
     data.reset_index(inplace=True)
