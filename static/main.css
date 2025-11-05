@@ -1,251 +1,110 @@
-/* 🌌 Full page styling */
+/* 🌌 Base Page Styling */
 body {
-    background-color: black;
-    color: white;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
+.e{color: white;
+
+}
+::placeholder {
+  color: white;
+  opacity: 1; /* ensures full visibility */
+}
+/* 🌟 Heading and Paragraphs */
 h3 {
-    color: white !important;
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
-/* Layout: text left, video right */
+/* 🧭 Layout Container */
 .main-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
-    gap: 80px;
-    background-color: black;
-
-    /* ❌ Remove this */
-    /* padding-left: 100px; */
-
-    /* ✅ Instead, control spacing via .c if needed */
-    padding: 0 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  gap: 60px;
+  background-color: black;
+  padding: 40px;
+  flex-wrap: wrap;
 }
 
-/* 🧾 Text box */
+/* 🧾 Text Box */
 .c {
-    background-color: black;
-    padding: 30px 50px;
-    border-radius: 20p
-    text-align: left;
-
-    /* ✅ Make sure it’s flush left */
-    margin-left: 0;
-      margin-top: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 480px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  text-align: left;
 }
 
-/* 🌟 Google heading */
+/* 🌟 Title */
 .g {
-    color: white;
-    font-size: 3rem;
-    font-weight: 700;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 15px cyan;
-    margin-bottom: 20px;
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 15px cyan;
+  margin-bottom: 15px;
 }
 
-/* 📜 Subheading */
-h3 {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-bottom: 30px;
-}
-p{
-color:white;}
-/* 🧾 Left text container */
-.c {
-    background-color: rgba(0, 0, 0, 0.6); /* slight transparency for depth */
-    padding: 40px 60px;
-    border-radius: 20px;
-    text-align: left;
-    margin-left: 60px;
-    transform: translateY(-50px); /* move up slightly */
-    max-width: 480px;
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-}
-
-/* 🌟 Heading */
-.g {
-    color: white;
-    font-size: 3rem;
-    font-weight: 700;
-    font-family: 'Orbitron', sans-serif;
-    text-shadow: 0 0 15px cyan;
-    margin-bottom: 15px;
-}
-
-/* 💬 Intro text */
+/* 💬 Intro */
 .intro {
-    color: #b0e0e6;
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    font-family: 'Poppins', sans-serif;
+  color: #b0e0e6;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
-/* 📜 Question line */
-.c h3 {
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* 🔘 Button layout */
+/* 🔘 Button Layout */
 .btn-container {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* ✨ Buttons */
+/* 🎛️ Buttons */
 .btn {
-    background-color: black;
-    border: 2px solid cyan;
-    color: cyan;
-    font-size: 1rem;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
+  background-color: black;
+  border: 2px solid cyan;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 0 rgba(0, 255, 255, 0.3);
 }
 
 .btn:hover {
-    background-color: cyan;
-    color: black;
-    box-shadow: 0 0 20px cyan;
+  background-color: cyan;
+  color: black;
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.7);
+  transform: translateY(-2px);
 }
 
-
-
-/* 🎥 Video styling */
+/* 🎥 Video Styling */
 .my-video {
-    width: 540px;
-    height: 580px;
-    border-radius: 40px;
-    box-shadow: 0 0 25px cyan;
-    object-fit: cover;
-    margin-left:100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px cyan;
+  object-fit: cover;
 }
 
-/* 🔘 Buttons */
-.btn-container {
-    display: flex;
-    gap: 20px;
-}
-
-.btn {
-    background-color: black;
-    border: 2px solid cyan;
-    color:white;
-    font-size: 1rem;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn {
-    background-color: cyan;
-    color: black;
-    box-shadow: 0 0 20px cyan;
-
-}
-/* 🎛️ Button base style */
-.btn {
-    background-color: black;
-    border: 2px solid cyan;
-    color: cyan;
-    font-size: 1rem;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 0 rgba(0, 255, 255, 0.3); /* base shadow for depth */
-    transform: translateY(0); /* neutral position */
-}
-
-/* ✨ 3D hover effect */
-.btn:hover {
-    background-color: cyan;
-    color: black;
-    box-shadow: 0 6px 15px rgba(0, 255, 255, 0.7); /* glowing shadow */
-    transform: translateY(-2px); /* 👈 moves up slightly for 3D pop */
-}
-.btn {
-    color: white !important;  /* 👈 force text color to white */
-    border: 2px solid cyan;
-    background-color: black;
-    font-size: 1rem;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 0 rgba(0, 255, 255, 0.3);
-    transform: translateY(0);
-}
-
-/* ✨ Hover (3D effect) */
-.btn:hover {
-    background-color: cyan;
-    color: black !important; /* change text to black on hover */
-    box-shadow: 0 6px 15px rgba(0, 255, 255, 0.7);
-    transform: translateY(-2px);
-}
-
-/* 🖱️ Click */
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.5);
-}
-.btn {
-    background-color: black;
-    border: 2px solid cyan;
-    color: white; /* white text */
-    font-size: 1rem;
-    padding: 10px 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 0 rgba(0, 255, 255, 0.3);
-    transform: translateY(0);
-}
-
-/* Hover: 3D effect + text stays white */
-.btn:hover {
-    background-color: cyan;
-    color: white !important; /* keep text white */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 255, 255, 0.8);
-}
-
-/* Click press effect */
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.5);
-}
+/* 🔄 Loading Screen */
 .loading-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -257,145 +116,118 @@ color:white;}
   color: white;
   font-size: 1.2rem;
   margin-top: 20px;
-  font-family: 'Poppins', sans-serif;
 }
 
-.loading-container {
+/* ❌ Modal (No Button Popup) */
+.no-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Black transparent overlay */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  z-index: 9999;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(3px);
 }
 
-.loading-container p {
+.no-modal-content {
+  background: #000;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
   color: white;
-  font-size: 1.2rem;
-  margin-top: 20px;
-  font-family: 'Poppins', sans-serif;
-}
-.loading-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black; /* fully black screen */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-/* Dim background + center modal */
-.no-modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    backdrop-filter: blur(2px);
-}
-
-.no-modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    animation: popIn 0.3s ease-in-out;
+  box-shadow: 0 0 25px rgba(0, 255, 157, 0.8);
+  border: 2px solid rgba(0, 255, 157, 0.6);
+  animation: popIn 0.3s ease-in-out;
 }
 
 @keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .no-modal-content h2 {
-    color: #e63946;
-    margin-bottom: 10px;
+  color: #00ff9d;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .no-modal-content p {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 25px;
 }
 
 .no-modal-content button {
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-/* Modal overlay (dimmed background) */
-.no-modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    backdrop-filter: blur(3px);
-}
-
-/* Centered popup box */
-.no-modal-content {
-    background: #000; /* black background */
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 0 25px rgba(0, 255, 157, 0.8); /* greenish glow */
-    animation: popIn 0.3s ease-in-out;
-    border: 2px solid rgba(0, 255, 157, 0.6);
-}
-
-/* Smooth pop-in animation */
-@keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* Text styles */
-.no-modal-content h2 {
-    color: #00ff9d;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.no-modal-content p {
-    font-size: 1.1rem;
-    color: #e0e0e0;
-    margin-bottom: 25px;
-}
-
-/* Button styling — dark theme with green glow */
-.no-modal-content button {
-    background-color: #00ff9d;
-    color: #000;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 25px;
-    box-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
-    transition: all 0.2s ease;
+  background-color: #00ff9d;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  box-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
+  transition: all 0.2s ease;
 }
 
 .no-modal-content button:hover {
-    background-color: #00cc7a;
-    box-shadow: 0 0 15px rgba(0, 255, 157, 1);
-    transform: scale(1.05);
+  background-color: #00cc7a;
+  transform: scale(1.05);
 }
 
+/* 📱 Responsive for Mobile */
+@media screen and (max-width: 600px) {
+  .main-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    padding: 20px;
+  }
 
+  .c {
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px;
+  }
+
+  .g {
+    font-size: 2rem;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .my-video {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+/* Make Yes/No button text white */
+.btn {
+  background-color: black;
+  border: 2px solid cyan;
+   color: white !important; /* ✅ White text */
+  font-size: 1rem;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 0 rgba(0, 255, 255, 0.3);
+}
+
+/* Hover effect */
+.btn:hover {
+  background-color: cyan;
+  color: black; /* ✅ Invert on hover */
+  box-shadow: 0 6px 15px rgba(0, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
