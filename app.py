@@ -75,7 +75,7 @@ def pridict():
 
         # --- Prediction ---
         y_pred_new = model.predict(X_pred_new)
-
+        y_pred_new = float(y_pred_new[0]
         # --- Signal and Output ---
         if y_pred_new > past:
             signal = "Bullish momentum — consider buying."
