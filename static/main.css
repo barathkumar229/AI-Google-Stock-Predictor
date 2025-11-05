@@ -238,3 +238,21 @@ h3 {
     height: 250px;
   }
 }
+/* Default size for desktop */
+.loading-lottie {
+  width: 500px;
+  height: 500px;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 600px) {
+  .loading-lottie {
+    width: 250px;
+    height: 250px;
+  }
+
+  #loading-text {
+    font-size: 1rem; /* smaller text on mobile */
+  }
+}
+
