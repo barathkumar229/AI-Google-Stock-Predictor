@@ -272,3 +272,56 @@ canvas#myChart {
     border-radius: 20px;
   }
 }
+/* Force mobile column layout */
+@media (max-width: 992px) {
+  .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 40px !important;
+    padding: 20px !important;
+    margin-top: 40px !important;
+  }
+
+  .chart,
+  .c {
+    width: 90% !important;
+    max-width: 500px !important;
+    height: auto !important;
+    padding: 20px !important;
+  }
+}
+/* 📱 Force mobile column layout with taller boxes */
+@media (max-width: 992px) {
+  .container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 40px !important;
+    padding: 20px !important;
+    margin-top: 40px !important;
+  }
+
+  .chart,
+  .c {
+    width: 90% !important;
+    max-width: 650px !important;
+    height: 550px !important; /* Increased height for better visibility */
+    padding: 25px !important;
+  }
+}
+
+/* 📱 Extra tweak for smaller mobile screens */
+@media (max-width: 600px) {
+  .chart,
+  .c {
+    width: 95% !important;
+    height: 600px !important; /* Even taller for very small screens */
+    padding: 25px !important;
+  }
+}
+
+
+
